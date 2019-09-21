@@ -1,5 +1,5 @@
-```!commands
+```!command
 
 !remindme
 !week
-!dt```
+!time```
