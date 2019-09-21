@@ -32,6 +32,14 @@ async def commands(ctx):
         await ctx.send(command_list())
 
 @bot.event
+async def on_message(message):
+    if message.content.startswith("uh oh") and not message.author.bot:
+        channel = message.channel
+        await channel.send("uh oh")
+
+    await bot.process_commands(message)
+
+@bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, cmds.errors.CommandNotFound):
         await ctx.send("Invalid command, try one of these:\n" + command_list())
