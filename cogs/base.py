@@ -17,7 +17,7 @@ class Base(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.content.startswith("uh oh") and not message.author.bot:
+        if message.content.lower().startswith("uh oh") and not message.author.bot:
             channel = message.channel
             await channel.send("uh oh")
 
