@@ -25,6 +25,15 @@ class Cmds(commands.Cog):
         dt = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         await ctx.send(f"Current datetime is {dt}")
 
+    @commands.command()
+    async def hug(self, ctx, user: discord.Member = None):
+        """Because everyone likes hugs (totally not copied from rubbergod)"""
+        if user is None:
+            user = ctx.author
+        
+        user = discord.utils.escape_markdown(user.display_name)
+        await ctx.send("<:peepoHug:625338190911373318>" + f" **{user}**")
+
     #                         #
     #      Help commands      #
     #                         #
