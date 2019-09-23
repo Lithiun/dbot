@@ -41,7 +41,7 @@ class Cmds(commands.Cog):
         await ctx.send("<:peepoHug:625338190911373318>" + f" **{user}**")
 
     @commands.command()
-    async def remindme(self, ctx, t_val: int = 1, t_unit: str = "minute"):
+    async def remindme(self, ctx, t_val: int = 1, t_unit: str = "minute", remindstring: str = "reminder"):
         """Reminds the user in n minutes, valid formats are:
         n second(s)
         n minute(s)
@@ -58,9 +58,10 @@ class Cmds(commands.Cog):
             await ctx.send("invalid time unit")
             return
 
-        await ctx.send(f"Reminder registered for {t_val} {t_unit}")
+        await ctx.message.add_reaction("✅")
+
         await asyncio.sleep(secs)
-        await ctx.send(f"<@{ctx.author.id}> reminder")
+        await ctx.send(f"<@{ctx.author.id}>  " + remindstring)
 
     @commands.command()
     async def week(self, ctx):
