@@ -1,5 +1,20 @@
 ```!command
+    Shows this text
 
-!remindme
+!remindme <n> <timeunit>
+    Reminds the user in n minutes, valid formats are:
+        n second(s)
+        n minute(s)
+        n hour(s)
+
+!hug <user_tag>
+    Because everyone likes hugs
+
 !week
-!time```
+    Sudý/Lichý
+    
+!time
+    Shows the current datetime
+    
+!godhelp
+    Why?```
