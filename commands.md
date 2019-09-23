@@ -15,6 +15,9 @@
     
 !time
     Shows the current datetime
+
+!rozvrh !timetable
+    Shows the timetable for the current day
     
 !godhelp
     Why?```
