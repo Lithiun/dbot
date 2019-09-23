@@ -73,7 +73,7 @@ class Cmds(commands.Cog):
 
     @commands.command()
     async def godhelp(self, ctx):
-        """Identifies the current week"""
+        """Directs the user to a psychologist"""
 
         await ctx.send("https://www.lli.vutbr.cz/psychologicke-poradenstvi")
 
