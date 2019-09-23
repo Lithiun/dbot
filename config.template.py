@@ -1,5 +1,5 @@
 class Config:
+    key = ""
+    command_prefix = "!"
 
-    def __init__(self):
-        self.key = ""
-        self.command_prefix = "!"
+    extensions = ["base", "cmds"]
