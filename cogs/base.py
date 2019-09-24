@@ -17,9 +17,13 @@ class Base(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
+        channel = message.channel
+
         if message.content.lower().startswith("uh oh") and not message.author.bot:
-            channel = message.channel
             await channel.send("uh oh")
+
+        elif "PR" in message.content:
+            await channel.send("https://github.com/KLZ-0/dbot/pulls")
 
     #                                    #
     #      Invalid command handler       #
