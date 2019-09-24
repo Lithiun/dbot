@@ -17,6 +17,11 @@ class Timetable(commands.Cog):
 
         daystr = "Dnesny rozvrh:"
         for line in c.execute('SELECT * FROM timetable WHERE day=?', str(weekday)):
+            # TODO: Rewrite these awful lines
+            iusweeks = [41, 43, 46]
+            if str(line[0]) == "1" and line[1] == "IUS" and datetime.datetime.now().isocalendar()[1] not in iusweeks:
+                continue
+
             daystr += f"\n`{line[1]} od {line[2]} do {line[3]} v [{line[4]}] : {line[5]}`"
 
         conn.close()
