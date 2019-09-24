@@ -40,7 +40,7 @@ class Base(commands.Cog):
             output += "".join(traceback.format_exception(type(error),
                                                          error,
                                                          error.__traceback__))
-            channel = self.bot.get_channel(config.bot_room_id)
+            channel = self.bot.get_channel(config.bot_dev_id)
             output = list(output[0 + i: 1900 + i] for i in range(0, len(output), 1900))
             if channel is not None:
                 for message in output:

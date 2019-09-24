@@ -6,7 +6,8 @@ class Messages:
     cmd_dt = "Current datetime is {datetime}"
     cmd_hug = "<:peepoHug:625338190911373318> **{user}**"
 
-    days_cz = ["pondeli", "utery", "streda", "ctvrtek", "patek"]
+    days_cz = ["pondělí", "úterý", "středa", "čtvrtek", "pátek"]
+    tt_days_cz = ["pondělí", "úterý", "středu", "čtvrtek", "pátek"]
     weeks_cz = ["Sudý", "Lichý"]
 
     tt_header = "Rozvrh na {day}:"

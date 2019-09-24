@@ -19,7 +19,7 @@ class Timetable(commands.Cog):
         conn = sqlite3.connect(getattr(config, "tt_db", "timetable.db"))
         c = conn.cursor()
 
-        daystr = messages.tt_header.format(day=messages.days_cz[weekday])
+        daystr = messages.tt_header.format(day=messages.tt_days_cz[weekday])
         for line in c.execute('SELECT * FROM timetable WHERE day=?', str(weekday)):
             # TODO: Rewrite these awful lines
             if str(line[0]) == "1" and line[1] == "IUS" and datetime.datetime.now().isocalendar()[1] not in semester.rare_subjects["IUS"]:
