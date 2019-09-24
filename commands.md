@@ -16,7 +16,7 @@
 !time
     Shows the current datetime
 
-!rozvrh !timetable
+!rozvrh [weekday]
     Shows the timetable for the current day
     
 !godhelp
