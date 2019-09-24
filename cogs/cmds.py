@@ -47,10 +47,11 @@ class Cmds(commands.Cog):
 
     @commands.command()
     async def remindme(self, ctx, t_val: int = 1, t_unit: str = "m", remindstring: str = "Reminder"):
-        """Reminds the user in n minutes, valid formats are:
-        n second(s)
-        n minute(s)
-        n hour(s)
+        """Reminds the user in n timeunits, with a specified message.
+        Valid timeunits are:
+        s -> second(s)
+        m -> minute(s)
+        h -> hour(s)
         """
 
         if t_unit.startswith("s"):

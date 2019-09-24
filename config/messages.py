@@ -2,7 +2,7 @@ class Messages:
     uhoh = "uh oh"
     pr_meme = "https://github.com/KLZ-0/dbot/pulls"
     godhelp_meme = "https://www.lli.vutbr.cz/psychologicke-poradenstvi"
-    test_success = "test successful!"
+    test_success = "Test successful!"
     cmd_dt = "Current datetime is {datetime}"
     cmd_hug = "<:peepoHug:625338190911373318> **{user}**"
 
@@ -12,7 +12,7 @@ class Messages:
 
     tt_header = "Rozvrh na {day}:"
     tt_line = "\n`{name} od {start} do {end} v [{rooms}] : {detail}`"
-    tt_prezuvky_needed = "\nNa tento den su prezuvky povinne"
+    tt_prezuvky_needed = "\nBring yo slippers!"
     tt_db_error = "Timetable database not found!"
 
     err_unknown_command = "Invalid command, try one of these:\n{commandlist}"
