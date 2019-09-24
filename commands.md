@@ -1,8 +1,9 @@
 ```!command
     Shows this text
 
-!remindme <n> <timeunit>
-    Reminds the user in n minutes, valid formats are:
+!remindme <n> <timeunit> <message>
+    Reminds you in n timeunits with an optional message.
+    Valid time formats are:
         n second(s)
         n minute(s)
         n hour(s)
@@ -11,13 +12,13 @@
     Because everyone likes hugs
 
 !week
-    Sudý/Lichý
+    Returns sudý/lichý
     
 !time
     Shows the current datetime
 
-!rozvrh [weekday]
-    Shows the timetable for the current day
+!rozvrh <weekday>
+    Shows the timetable for a specific day (current if not specified)
     
 !godhelp
     Why?```
