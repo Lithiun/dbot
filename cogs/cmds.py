@@ -46,18 +46,19 @@ class Cmds(commands.Cog):
         await ctx.send(messages.cmd_hug.format(user=user))
 
     @commands.command()
-    async def remindme(self, ctx, t_val: int = 1, t_unit: str = "minute", remindstring: str = "reminder"):
-        """Reminds the user in n minutes, valid formats are:
-        n second(s)
-        n minute(s)
-        n hour(s)
+    async def remindme(self, ctx, t_val: int = 1, t_unit: str = "m", remindstring: str = "Reminder"):
+        """Reminds the user in n timeunits, with a specified message.
+        Valid timeunits are:
+        s -> second(s)
+        m -> minute(s)
+        h -> hour(s)
         """
 
-        if t_unit.startswith("second"):
+        if t_unit.startswith("s"):
             secs = t_val
-        elif t_unit.startswith("minute"):
+        elif t_unit.startswith("m"):
             secs = t_val * 60
-        elif t_unit.startswith("hour"):
+        elif t_unit.startswith("h"):
             secs = t_val * 3600
         else:
             await ctx.send(messages.err_arg_remindme)
