@@ -2,6 +2,7 @@ import datetime
 import discord
 import asyncio
 from discord.ext import commands
+import util
 
 from config import config, messages
 config = config.Config
@@ -25,14 +26,14 @@ class Cmds(commands.Cog):
     async def test(self, ctx):
         """Response test command"""
 
-        await ctx.send(f"test successful!")
+        await ctx.send(messages.test_success)
 
     @commands.command()
     async def time(self, ctx):
         """Shows the current datetime"""
         
         dt = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S")
-        await ctx.send(f"Current datetime is {dt}")
+        await ctx.send(messages.cmd_dt.format(datetime=dt))
 
     @commands.command()
     async def hug(self, ctx, user: discord.Member = None):
@@ -42,7 +43,7 @@ class Cmds(commands.Cog):
             user = ctx.author
         
         user = discord.utils.escape_markdown(user.display_name)
-        await ctx.send("<:peepoHug:625338190911373318>" + f" **{user}**")
+        await ctx.send(messages.cmd_hug.format(user=user))
 
     @commands.command()
     async def remindme(self, ctx, t_val: int = 1, t_unit: str = "minute", remindstring: str = "reminder"):
@@ -59,7 +60,7 @@ class Cmds(commands.Cog):
         elif t_unit.startswith("hour"):
             secs = t_val * 3600
         else:
-            await ctx.send("invalid time unit")
+            await ctx.send(messages.err_arg_remindme)
             return
 
         await ctx.message.add_reaction("✅")
@@ -73,13 +74,13 @@ class Cmds(commands.Cog):
 
         weeknumber = datetime.datetime.now().isocalendar()[1]
 
-        await ctx.send("Lichý" if weeknumber % 2 else "Sudý")
+        await ctx.send(messages.weeks_cz[weeknumber % 2])
 
     @commands.command()
     async def godhelp(self, ctx):
         """Directs the user to a psychologist"""
 
-        await ctx.send("https://www.lli.vutbr.cz/psychologicke-poradenstvi")
+        await ctx.send(messages.godhelp_meme)
 
     #                         #
     #      Help commands      #
@@ -87,12 +88,10 @@ class Cmds(commands.Cog):
 
     @commands.command()
     async def command(self, ctx):
-        await ctx.send(command_list())
+        """Shows available commands"""
+        # NOTE: Help does not work (reserved)
+        await ctx.send(util.command_list())
 
-    # NOTE: Help does not work (reserved)
-    # @commands.command()
-    # async def help(self, ctx):
-    #     await ctx.send(command_list())
 
     #                           #
     #      General methods      #

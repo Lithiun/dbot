@@ -16,7 +16,6 @@ class Timetable(commands.Cog):
         self.bot = bot
 
     def getTimetable(self, weekday):
-        # TODO: Move timetable.dm name to config
         conn = sqlite3.connect(getattr(config, "tt_db", "timetable.db"))
         c = conn.cursor()
 
