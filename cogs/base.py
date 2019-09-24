@@ -1,14 +1,11 @@
 import discord
 from discord.ext import commands
+import util
+import traceback
 
 from config import config, messages
 config = config.Config
 messages = messages.Messages
-
-def command_list():
-    with open("commands.md", "r", encoding="utf-8") as f:
-        txt = f.read()
-    return txt
 
 class Base(commands.Cog):
 
@@ -36,7 +33,18 @@ class Base(commands.Cog):
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, commands.errors.CommandNotFound):
-            await ctx.send("Invalid command, try one of these:\n" + command_list())
+            await ctx.send(messages.err_unknown_command.format(commandlist=util.command_list()))
+
+        else:
+            output = f"Ignoring exception in command {ctx.command}:\n"
+            output += "".join(traceback.format_exception(type(error),
+                                                         error,
+                                                         error.__traceback__))
+            channel = self.bot.get_channel(config.bot_room_id)
+            output = list(output[0 + i: 1900 + i] for i in range(0, len(output), 1900))
+            if channel is not None:
+                for message in output:
+                    await channel.send(f"```\n{message}\n```")
 
 def setup(bot):
     bot.add_cog(Base(bot))
