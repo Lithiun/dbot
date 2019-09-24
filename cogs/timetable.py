@@ -16,13 +16,20 @@ class Timetable(commands.Cog):
         self.bot = bot
 
     def getTimetable(self, weekday):
+        weeknumber = datetime.datetime.now().isocalendar()[1]
         conn = sqlite3.connect(getattr(config, "tt_db", "timetable.db"))
         c = conn.cursor()
 
         daystr = messages.tt_header.format(day=messages.tt_days_cz[weekday])
         for line in c.execute('SELECT * FROM timetable WHERE day=?', str(weekday)):
+            # NOTE: Weekdays start from 0 = monday
             # TODO: Rewrite these awful lines
-            if str(line[0]) == "1" and line[1] == "IUS" and datetime.datetime.now().isocalendar()[1] not in semester.rare_subjects["IUS"]:
+            if str(line[0]) == "1" and line[1] == "IUS" and weeknumber not in semester.rare_subjects["IUS"]:
+                # filter IUS allow only n times per semester
+                continue
+
+            if str(line[0]) == "3" and line[1] == "IEL" and weeknumber % 2 == 0:
+                # filter IEL, allow only odd weeks
                 continue
 
             daystr += messages.tt_line.format(
