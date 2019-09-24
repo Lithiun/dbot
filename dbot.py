@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
 
-import config
+from config import config, messages
 config = config.Config
+messages = messages.Messages
 
 bot = commands.Bot(command_prefix=config.command_prefix)
 

@@ -5,6 +5,10 @@ import asyncio
 import os
 from discord.ext import commands
 
+from config import config, messages
+config = config.Config
+messages = messages.Messages
+
 class Timetable(commands.Cog):
 
     def __init__(self, bot):

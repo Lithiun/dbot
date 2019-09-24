@@ -1,6 +1,10 @@
 import discord
 from discord.ext import commands
 
+from config import config, messages
+config = config.Config
+messages = messages.Messages
+
 def command_list():
     with open("commands.md", "r", encoding="utf-8") as f:
         txt = f.read()
@@ -19,11 +23,11 @@ class Base(commands.Cog):
     async def on_message(self, message):
         channel = message.channel
 
-        if message.content.lower().startswith("uh oh") and not message.author.bot:
-            await channel.send("uh oh")
+        if message.content.lower().startswith(messages.uhoh) and not message.author.bot:
+            await channel.send(messages.uhoh)
 
         elif "PR" in message.content:
-            await channel.send("https://github.com/KLZ-0/dbot/pulls")
+            await channel.send(messages.pr_meme)
 
     #                                    #
     #      Invalid command handler       #

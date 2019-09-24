@@ -3,6 +3,10 @@ import discord
 import asyncio
 from discord.ext import commands
 
+from config import config, messages
+config = config.Config
+messages = messages.Messages
+
 def command_list():
     with open("commands.md", "r", encoding="utf-8") as f:
         txt = f.read()
